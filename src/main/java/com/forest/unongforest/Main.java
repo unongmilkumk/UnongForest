@@ -1,5 +1,7 @@
 package com.forest.unongforest;
 
+import com.forest.unongforest.gui.BeaconGui;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -7,6 +9,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Hello World");
+        Bukkit.getPluginManager().registerEvents(new BeaconGui(), this);
     }
 
     @Override
