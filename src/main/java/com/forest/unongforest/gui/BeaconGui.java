@@ -2,9 +2,7 @@ package com.forest.unongforest.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,9 +14,6 @@ public class BeaconGui implements Listener {
         }
         ret.setItem(12, new ItemStack(Material.));
         return ret;
-    }
-    @EventHandler
-    public void onClick(InventoryClickEvent e) {
-
+        System.out.println("EASFK'pweagujio;aerjgil");
     }
 }
