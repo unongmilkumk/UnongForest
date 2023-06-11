@@ -2,6 +2,7 @@ package com.forest.unongforest.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -25,6 +26,14 @@ public class BeaconGui implements Listener {
 
     @EventHandler
     public void click(InventoryClickEvent e){
-        e.getClickedInventory().equals(BeaconGui.getInventory());
+        Player p = (Player) e.getWhoClicked();
+        Inventory ret = BeaconGui.getInventory();
+        Int slot = e.getSlot();
+        if (e.getClickedInventory().equals(ret)) {
+            e.setCancelled(true);
+            if (slot == 9){
+                p.sendMessage("소환");
+            }
+        }
     }
 }
