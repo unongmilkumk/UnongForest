@@ -14,6 +14,6 @@ public class BeaconGui implements Listener {
         }
         ret.setItem(12, new ItemStack(Material.));
         return ret;
-        System.out.println("EASFK'pweagujio;aerjgil");
+        System.out.println("이딴거 하지 마!");
     }
 }
