@@ -1,6 +1,8 @@
 package com.forest.unongforest;
 
 import com.forest.unongforest.gui.BeaconGui;
+import com.forest.unongforest.guild.Guild;
+import com.forest.unongforest.guild.GuildList;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,7 +13,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class Beacon implements Listener {
-
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
@@ -26,10 +27,14 @@ public class Beacon implements Listener {
     public void onPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
         Block b = e.getBlock();
+        Guild g = GuildList.getGuild(p);
+        if (g == null) return;
+        if (g.hasBeacon()) return;
         if (b.getLocation().getBlockY() <= 64){
             p.sendMessage("신호기가 설치되었습니다");
         } else {
             p.sendMessage("해수면 아래에 신호기를 설치해 주세요");
         }
+        g.setBeacon(b.getLocation());
     }
 }
