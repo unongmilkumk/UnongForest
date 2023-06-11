@@ -28,11 +28,19 @@ public class BeaconGui implements Listener {
     public void click(InventoryClickEvent e){
         Player p = (Player) e.getWhoClicked();
         Inventory ret = BeaconGui.getInventory();
-        Int slot = e.getSlot();
+        int slot = e.getSlot();
         if (e.getClickedInventory().equals(ret)) {
             e.setCancelled(true);
             if (slot == 9){
                 p.sendMessage("소환");
+            } else if (slot == 11) {
+                p.sendMessage("부활");
+            } else if (slot == 13) {
+                p.sendMessage("교환");
+            } else if (slot == 15) {
+                p.sendMessage("선물");
+            } else if (slot == 18) {
+                p.sendMessage("정찰");
             }
         }
     }
