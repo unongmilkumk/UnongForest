@@ -1,12 +1,15 @@
 package com.forest.unongforest.gui;
 
 import com.forest.unongforest.Maker;
+import com.forest.unongforest.guild.Guild;
+import com.forest.unongforest.guild.GuildList;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,7 +22,7 @@ public class BeaconGui implements Listener {
             ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
         ArrayList<String> lore1 = new ArrayList<>();
-        lore1.add("구성원 : 1/4");
+        lore1.add("구성원 : 1");
         lore1.add("소환비용 : 다이아몬드 X 64개");
         ArrayList<String> lore2 = new ArrayList<>();
         ArrayList<String> lore3 = new ArrayList<>();
@@ -29,6 +32,14 @@ public class BeaconGui implements Listener {
         ret.setItem(14, Maker.makeItem(Material.EXPERIENCE_BOTTLE, "상점", lore3));
         ret.setItem(16, Maker.makeItem(Material.ELYTRA, "정찰용 폭죽", lore4));
         return ret;
+    }
+
+    @EventHandler
+    public void click(InventoryOpenEvent e){
+        Player p = (Player) e.getPlayer();
+        Inventory ret = BeaconGui.getInventory();
+        Guild g = GuildList.getGuild();
+        }
     }
 
     @EventHandler
