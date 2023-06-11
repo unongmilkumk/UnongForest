@@ -1,6 +1,7 @@
 package com.forest.unongforest.plugin;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -9,7 +10,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
 
-public class Maker {
+public class Method {
     public static ItemStack makeItem(Material material, String name, List<String> lore) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
@@ -29,5 +30,13 @@ public class Maker {
             head.setItemMeta(meta);
         }
         return head;
+    }
+    public static boolean canEnchantable(ItemStack itemStack) {
+        for (Enchantment enchantment : Enchantment.values()) {
+            if (enchantment.canEnchantItem(itemStack)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

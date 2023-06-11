@@ -1,6 +1,6 @@
 package com.forest.unongforest.gui.beacon;
 
-import com.forest.unongforest.plugin.Maker;
+import com.forest.unongforest.plugin.Method;
 import com.forest.unongforest.plugin.guild.Guild;
 import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.Bukkit;
@@ -27,10 +27,10 @@ public class BeaconGui implements Listener {
         ArrayList<String> lore2 = new ArrayList<>();
         ArrayList<String> lore3 = new ArrayList<>();
         ArrayList<String> lore4 = new ArrayList<>();
-        BI.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
-        BI.setItem(12, Maker.makeItem(Material.TOTEM_OF_UNDYING, "부활", lore2));
-        BI.setItem(14, Maker.makeItem(Material.EXPERIENCE_BOTTLE, "상점", lore3));
-        BI.setItem(16, Maker.makeItem(Material.ELYTRA, "정찰용 폭죽", lore4));
+        BI.setItem(10, Method.makeItem(Material.PLAYER_HEAD, "소환", lore1));
+        BI.setItem(12, Method.makeItem(Material.TOTEM_OF_UNDYING, "부활", lore2));
+        BI.setItem(14, Method.makeItem(Material.EXPERIENCE_BOTTLE, "상점", lore3));
+        BI.setItem(16, Method.makeItem(Material.ELYTRA, "정찰용 폭죽", lore4));
         return BI;
     }
 
@@ -43,7 +43,7 @@ public class BeaconGui implements Listener {
             ArrayList<String> lore1 = new ArrayList<>();
             lore1.add("구성원 : " + g.getMembers());
             lore1.add("소환비용 : 다이아몬드X" + g.getMembers().size()*64 + "개");
-            BI.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
+            BI.setItem(10, Method.makeItem(Material.PLAYER_HEAD, "소환", lore1));
         }
     }
 

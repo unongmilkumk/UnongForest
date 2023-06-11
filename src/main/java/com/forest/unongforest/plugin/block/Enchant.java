@@ -1,6 +1,7 @@
 package com.forest.unongforest.plugin.block;
 
 import com.forest.unongforest.gui.enchant.EnchantGui;
+import com.forest.unongforest.plugin.Method;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -28,5 +29,10 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
+        if(p.getOpenInventory().equals(EnchantGui.getInventory())){
+            e.setCancelled(true);
+            if (Method.canEnchantable(e.getClickedInventory().getItem(e.getSlot()))){
+            }
+        }
     }
 }
