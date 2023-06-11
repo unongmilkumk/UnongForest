@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
 
-public class ItemMaker {
+public class Maker {
     public static ItemStack makeItem(Material material, String name, List<String> lore) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
