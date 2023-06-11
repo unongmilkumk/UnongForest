@@ -1,8 +1,8 @@
 package com.forest.unongforest.gui;
 
 import com.forest.unongforest.plugin.Maker;
-import com.forest.unongforest.guild.Guild;
-import com.forest.unongforest.guild.GuildList;
+import com.forest.unongforest.plugin.guild.Guild;
+import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,8 +1,8 @@
 package com.forest.unongforest.plugin.block;
 
 import com.forest.unongforest.gui.BeaconGui;
-import com.forest.unongforest.guild.Guild;
-import com.forest.unongforest.guild.GuildList;
+import com.forest.unongforest.plugin.guild.Guild;
+import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
