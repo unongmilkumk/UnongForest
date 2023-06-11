@@ -1,4 +1,4 @@
-package com.forest.unongforest;
+package com.forest.unongforest.plugin.block;
 
 import com.forest.unongforest.gui.BeaconGui;
 import com.forest.unongforest.guild.Guild;

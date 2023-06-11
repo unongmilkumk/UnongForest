@@ -1,4 +1,4 @@
 name: UnongForest
 version: '${version}'
-main: com.forest.unongforest.Main
+main: com.forest.unongforest.plugin.Main
 api-version: 1.20

@@ -1,4 +1,4 @@
-package com.forest.unongforest;
+package com.forest.unongforest.plugin;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
