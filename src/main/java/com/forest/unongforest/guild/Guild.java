@@ -2,10 +2,40 @@ package com.forest.unongforest.guild;
 
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 public class Guild {
-    Player leader;
+    private Player leader;
+    private ArrayList<Player> members;
+
     public Guild(Player leader) {
+        this.leader = leader;
+        this.members = new ArrayList<>();
+        this.members.add(leader);
+        GuildList.addGuild(this);
+    }
+
+    public Player getLeader() {
+        return leader;
+    }
+
+    public void setLeader(Player leader) {
         this.leader = leader;
     }
 
+    public ArrayList<Player> getMembers() {
+        return members;
+    }
+
+    public boolean addMember(Player player) {
+        return members.add(player);
+    }
+
+    public boolean removeMember(Player player) {
+        return members.remove(player);
+    }
+
+    public boolean containsMember(Player player) {
+        return members.contains(player);
+    }
 }
