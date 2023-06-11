@@ -11,8 +11,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class Enchant implements Listener {
+
+    int Slot = -1;
 
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
@@ -29,9 +32,12 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
+        ItemStack i = e.getClickedInventory().getItem(e.getSlot());
         if(p.getOpenInventory().equals(EnchantGui.getInventory())){
             e.setCancelled(true);
-            if (Method.canEnchantable(e.getClickedInventory().getItem(e.getSlot()))){
+            if (Method.canEnchantable(i)){
+                p.getOpenInventory().setItem(13, i.clone());
+                Slot = e.getSlot();
             }
         }
     }
