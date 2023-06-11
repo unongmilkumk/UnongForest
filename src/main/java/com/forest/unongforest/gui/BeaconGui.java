@@ -59,7 +59,7 @@ public class BeaconGui implements Listener {
             } else if (slot == 12) {
                 p.openInventory(ResurrectionGui.getInventory());
             } else if (slot == 14) {
-                p.sendMessage("교환");
+                p.openInventory(StoreGui.getInventory());
             } else if (slot == 16) {
                 p.sendMessage("정찰");
             }
