@@ -11,6 +11,7 @@ public class Main extends JavaPlugin {
         getLogger().info("Hello World");
         Bukkit.getPluginManager().registerEvents(new BeaconGui(), this);
         Bukkit.getPluginManager().registerEvents(new Beacon(), this);
+        Bukkit.getPluginManager().registerEvents(new Enchant(), this);
     }
 
     @Override
