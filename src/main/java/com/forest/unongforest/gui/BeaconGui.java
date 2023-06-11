@@ -38,8 +38,8 @@ public class BeaconGui implements Listener {
     public void click(InventoryOpenEvent e){
         Player p = (Player) e.getPlayer();
         Inventory ret = BeaconGui.getInventory();
-        Guild g = GuildList.getGuild();
-        }
+        Guild g = GuildList.getGuild(p.getPlayer());
+        g.getMembers().size();
     }
 
     @EventHandler
