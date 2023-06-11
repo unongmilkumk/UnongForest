@@ -2,7 +2,7 @@ package com.forest.unongforest.plugin;
 
 import com.forest.unongforest.plugin.block.Beacon;
 import com.forest.unongforest.plugin.block.Enchant;
-import com.forest.unongforest.gui.BeaconGui;
+import com.forest.unongforest.gui.beacon.BeaconGui;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

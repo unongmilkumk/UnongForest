@@ -1,6 +1,6 @@
 package com.forest.unongforest.plugin.block;
 
-import com.forest.unongforest.gui.BeaconGui;
+import com.forest.unongforest.gui.beacon.BeaconGui;
 import com.forest.unongforest.plugin.guild.Guild;
 import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.Material;
@@ -16,8 +16,9 @@ public class Beacon implements Listener {
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
+        Block b = e.getClickedBlock();
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
-            if (e.getClickedBlock().getType().equals(Material.BEACON)) {
+            if (b.getType().equals(Material.BEACON)) {
                 p.openInventory(BeaconGui.getInventory());
             }
         }

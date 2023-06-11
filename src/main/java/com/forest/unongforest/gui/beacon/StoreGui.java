@@ -1,4 +1,4 @@
-package com.forest.unongforest.gui;
+package com.forest.unongforest.gui.beacon;
 
         import org.bukkit.Bukkit;
         import org.bukkit.Material;
@@ -8,10 +8,10 @@ package com.forest.unongforest.gui;
 public class StoreGui {
 
     public static Inventory getInventory() {
-        Inventory ret = Bukkit.createInventory(null, 27, "교환");
+        Inventory STI = Bukkit.createInventory(null, 27, "교환");
         for (int i = 0; i <= 26; i++) {
-            ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            STI.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
-        return ret;
+        return STI;
     }
 }

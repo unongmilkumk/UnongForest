@@ -1,4 +1,4 @@
-package com.forest.unongforest.gui;
+package com.forest.unongforest.gui.beacon;
 
 import com.forest.unongforest.plugin.Maker;
 import com.forest.unongforest.plugin.guild.Guild;
@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class BeaconGui implements Listener {
     public static Inventory getInventory() {
-        Inventory ret = Bukkit.createInventory(null, 27, "신호기");
+        Inventory BI = Bukkit.createInventory(null, 27, "신호기");
         for (int i = 0; i <= 26; i++) {
-            ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            BI.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
         ArrayList<String> lore1 = new ArrayList<>();
         lore1.add("구성원 : 1");
@@ -27,35 +27,35 @@ public class BeaconGui implements Listener {
         ArrayList<String> lore2 = new ArrayList<>();
         ArrayList<String> lore3 = new ArrayList<>();
         ArrayList<String> lore4 = new ArrayList<>();
-        ret.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
-        ret.setItem(12, Maker.makeItem(Material.TOTEM_OF_UNDYING, "부활", lore2));
-        ret.setItem(14, Maker.makeItem(Material.EXPERIENCE_BOTTLE, "상점", lore3));
-        ret.setItem(16, Maker.makeItem(Material.ELYTRA, "정찰용 폭죽", lore4));
-        return ret;
+        BI.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
+        BI.setItem(12, Maker.makeItem(Material.TOTEM_OF_UNDYING, "부활", lore2));
+        BI.setItem(14, Maker.makeItem(Material.EXPERIENCE_BOTTLE, "상점", lore3));
+        BI.setItem(16, Maker.makeItem(Material.ELYTRA, "정찰용 폭죽", lore4));
+        return BI;
     }
 
     @EventHandler
     public void open(InventoryOpenEvent e){
         Player p = (Player) e.getPlayer();
-        Inventory ret = BeaconGui.getInventory();
+        Inventory BI = BeaconGui.getInventory();
         Guild g = GuildList.getGuild(p);
-        if (e.getInventory().equals(ret)) {
+        if (e.getInventory().equals(BI)) {
             ArrayList<String> lore1 = new ArrayList<>();
             lore1.add("구성원 : " + g.getMembers());
             lore1.add("소환비용 : 다이아몬드X" + g.getMembers().size()*64 + "개");
-            ret.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
+            BI.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
         }
     }
 
     @EventHandler
     public void click(InventoryClickEvent e){
         Player p = (Player) e.getWhoClicked();
-        Inventory ret = BeaconGui.getInventory();
+        Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
-        if (e.getClickedInventory().equals(ret)) {
+        if (e.getClickedInventory().equals(BI)) {
             e.setCancelled(true);
             if (slot == 10){
-                p.openInventory(GuildGui.getInventory());
+                p.openInventory(SummonGui.getInventory());
             } else if (slot == 12) {
                 p.openInventory(ResurrectionGui.getInventory());
             } else if (slot == 14) {

@@ -1,7 +1,6 @@
 package com.forest.unongforest.plugin.block;
 
-import com.forest.unongforest.gui.BeaconGui;
-import com.forest.unongforest.gui.EnchantGui;
+import com.forest.unongforest.gui.enchant.EnchantGui;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
