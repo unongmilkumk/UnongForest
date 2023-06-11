@@ -16,7 +16,6 @@ public class Beacon implements Listener {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
             if (e.getClickedBlock().getType().equals(Material.BEACON)) {
                 p.openInventory(BeaconGui.getInventory());
-
             }
         }
     }

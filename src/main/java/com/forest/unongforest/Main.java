@@ -10,6 +10,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Hello World");
         Bukkit.getPluginManager().registerEvents(new BeaconGui(), this);
+        Bukkit.getPluginManager().registerEvents(new Beacon(), this);
     }
 
     @Override

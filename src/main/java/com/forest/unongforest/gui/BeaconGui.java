@@ -16,11 +16,10 @@ public class BeaconGui implements Listener {
         for (int i = 0; i <= 26; i++) {
             ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
-        ret.setItem(9, new ItemStack(Material.PLAYER_HEAD));
-        ret.setItem(11, new ItemStack(Material.TOTEM_OF_UNDYING));
-        ret.setItem(13, new ItemStack(Material.EXPERIENCE_BOTTLE));
-        ret.setItem(15, new ItemStack(Material.BUNDLE));
-        ret.setItem(17, new ItemStack(Material.ELYTRA));
+        ret.setItem(10, new ItemStack(Material.PLAYER_HEAD));
+        ret.setItem(12, new ItemStack(Material.TOTEM_OF_UNDYING));
+        ret.setItem(14, new ItemStack(Material.EXPERIENCE_BOTTLE));
+        ret.setItem(16, new ItemStack(Material.ELYTRA));
         return ret;
     }
 
@@ -31,15 +30,13 @@ public class BeaconGui implements Listener {
         int slot = e.getSlot();
         if (e.getClickedInventory().equals(ret)) {
             e.setCancelled(true);
-            if (slot == 9){
+            if (slot == 10){
                 p.sendMessage("소환");
-            } else if (slot == 11) {
+            } else if (slot == 12) {
                 p.sendMessage("부활");
-            } else if (slot == 13) {
+            } else if (slot == 14) {
                 p.sendMessage("교환");
-            } else if (slot == 15) {
-                p.sendMessage("선물");
-            } else if (slot == 18) {
+            } else if (slot == 16) {
                 p.sendMessage("정찰");
             }
         }
