@@ -38,8 +38,11 @@ public class BeaconGui implements Listener {
     public void click(InventoryOpenEvent e){
         Player p = (Player) e.getPlayer();
         Inventory ret = BeaconGui.getInventory();
-        Guild g = GuildList.getGuild(p.getPlayer());
-        g.getMembers().size();
+        Guild g = GuildList.getGuild(p);
+        ArrayList<String> lore1 = new ArrayList<>();
+        lore1.add("구성원 : " + g.getMembers());
+        lore1.add("소환비용 : 다이아몬드X" + g.getMembers().size()*64 + "개");
+        ret.setItem(10, Maker.makeItem(Material.PLAYER_HEAD, "소환", lore1));
     }
 
     @EventHandler
