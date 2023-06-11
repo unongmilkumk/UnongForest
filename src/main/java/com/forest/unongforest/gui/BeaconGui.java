@@ -12,8 +12,11 @@ public class BeaconGui implements Listener {
         for (int i = 0; i <= 26; i++) {
             ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
-        ret.setItem(12, new ItemStack(Material.));
+        ret.setItem(9, new ItemStack(Material.PLAYER_HEAD));
+        ret.setItem(11, new ItemStack(Material.TOTEM_OF_UNDYING));
+        ret.setItem(13, new ItemStack(Material.EXPERIENCE_BOTTLE));
+        ret.setItem(15, new ItemStack(Material.BUNDLE));
+        ret.setItem(17, new ItemStack(Material.ELYTRA));
         return ret;
-        System.out.println("EASFK'pweagujio;aerjgil");
     }
 }
