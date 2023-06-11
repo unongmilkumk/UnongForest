@@ -18,7 +18,7 @@ public class BeaconGui implements Listener {
     lore.add("1");
 
     public static Inventory getInventory() {
-        Inventory ret = Bukkit.createInventory(null, 3, "신호기");
+        Inventory ret = Bukkit.createInventory(null, 27, "신호기");
         for (int i = 0; i <= 26; i++) {
             ret.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
         }
