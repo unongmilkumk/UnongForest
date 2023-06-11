@@ -55,7 +55,7 @@ public class BeaconGui implements Listener {
         if (e.getClickedInventory().equals(ret)) {
             e.setCancelled(true);
             if (slot == 10){
-                p.sendMessage("소환");
+                p.openInventory(GuildGui.getInventory());
             } else if (slot == 12) {
                 p.sendMessage("부활");
             } else if (slot == 14) {
