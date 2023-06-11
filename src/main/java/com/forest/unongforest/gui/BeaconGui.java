@@ -62,6 +62,8 @@ public class BeaconGui implements Listener {
                 p.openInventory(StoreGui.getInventory());
             } else if (slot == 16) {
                 p.sendMessage("정찰");
+            } else {
+                e.setCancelled(true);
             }
         }
     }
