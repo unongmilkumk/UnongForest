@@ -1,9 +1,11 @@
 package com.forest.unongforest;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
 
@@ -16,5 +18,16 @@ public class ItemMaker {
         itemMeta.addItemFlags(ItemFlag.values());
         item.setItemMeta(itemMeta);
         return item;
+    }
+    public static ItemStack makePlayerHead(Player player, String name, List<String> lore) {
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) head.getItemMeta();
+        if (meta != null) {
+            meta.setOwningPlayer(player);
+            meta.setDisplayName(name);
+            meta.setLore(lore);
+            head.setItemMeta(meta);
+        }
+        return head;
     }
 }
