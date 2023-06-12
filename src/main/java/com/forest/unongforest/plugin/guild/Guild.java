@@ -1,4 +1,4 @@
-package com.forest.unongforest.guild;
+package com.forest.unongforest.plugin.guild;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

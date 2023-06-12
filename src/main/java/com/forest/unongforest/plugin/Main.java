@@ -1,6 +1,8 @@
-package com.forest.unongforest;
+package com.forest.unongforest.plugin;
 
-import com.forest.unongforest.gui.BeaconGui;
+import com.forest.unongforest.plugin.block.Beacon;
+import com.forest.unongforest.plugin.block.Enchant;
+import com.forest.unongforest.gui.beacon.BeaconGui;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,6 +13,7 @@ public class Main extends JavaPlugin {
         getLogger().info("Hello World");
         Bukkit.getPluginManager().registerEvents(new BeaconGui(), this);
         Bukkit.getPluginManager().registerEvents(new Beacon(), this);
+        Bukkit.getPluginManager().registerEvents(new Enchant(), this);
     }
 
     @Override
