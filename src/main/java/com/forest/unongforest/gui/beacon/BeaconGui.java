@@ -53,7 +53,7 @@ public class BeaconGui implements Listener {
         Player p = (Player) e.getWhoClicked();
         Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
-        if (Objects.requireNonNull(e.getClickedInventory()).equals(BI)) {
+        if (e.getView().getTitle().equals("신호기")) {
             e.setCancelled(true);
             if (slot == 10){
                 p.openInventory(SummonGui.getInventory());
