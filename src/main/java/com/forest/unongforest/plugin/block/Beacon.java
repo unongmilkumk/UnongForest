@@ -31,20 +31,22 @@ public class Beacon implements Listener {
         Player p = e.getPlayer();
         Block b = e.getBlock();
         Guild g = GuildList.getGuild(p);
-        if (g == null) {
-            e.setCancelled(true);
-            return;
-        }
-        if (g.hasBeacon()) {
-            e.setCancelled(true);
-            return;
-        }
-        if (b.getLocation().getBlockY() <= 64){
-            p.sendMessage("신호기가 설치되었습니다");
-            g.setBeacon(b.getLocation());
-        } else {
-            p.sendMessage("해수면 아래에 신호기를 설치해 주세요");
-            e.setCancelled(true);
+        if (b.getType().equals(Material.BEACON)) {
+            if (g == null) {
+                e.setCancelled(true);
+                return;
+            }
+            if (g.hasBeacon()) {
+                e.setCancelled(true);
+                return;
+            }
+            if (b.getLocation().getBlockY() <= 64) {
+                p.sendMessage("신호기가 설치되었습니다");
+                g.setBeacon(b.getLocation());
+            } else {
+                p.sendMessage("해수면 아래에 신호기를 설치해 주세요");
+                e.setCancelled(true);
+            }
         }
     }
 }
