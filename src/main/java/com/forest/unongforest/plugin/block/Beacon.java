@@ -12,13 +12,15 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.Objects;
+
 public class Beacon implements Listener {
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
-            if (b.getType().equals(Material.BEACON)) {
+            if (Objects.requireNonNull(b).getType().equals(Material.BEACON)) {
                 p.openInventory(BeaconGui.getInventory());
             }
         }

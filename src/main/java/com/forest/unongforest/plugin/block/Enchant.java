@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class Enchant implements Listener {
 
     int Slot = -1;
@@ -22,7 +24,7 @@ public class Enchant implements Listener {
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
-            if (b.getType().equals(Material.ENCHANTING_TABLE)) {
+            if (Objects.requireNonNull(b).getType().equals(Material.ENCHANTING_TABLE)) {
                 p.openInventory(EnchantGui.getInventory());
             }
         }
@@ -32,11 +34,11 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
-        ItemStack i = e.getClickedInventory().getItem(e.getSlot());
-        if(p.getOpenInventory().equals(EnchantGui.getInventory())){
+        ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(e.getSlot());
+        if(Objects.requireNonNull(p.getOpenInventory().getTopInventory()).equals(EnchantGui.getInventory())){
             e.setCancelled(true);
             if (Method.canEnchantable(i)){
-                p.getOpenInventory().setItem(13, i.clone());
+                p.getOpenInventory().setItem(13, Objects.requireNonNull(i).clone());
                 Slot = e.getSlot();
             }
         }

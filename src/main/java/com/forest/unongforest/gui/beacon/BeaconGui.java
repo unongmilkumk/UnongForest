@@ -14,6 +14,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BeaconGui implements Listener {
     public static Inventory getInventory() {
@@ -52,7 +53,7 @@ public class BeaconGui implements Listener {
         Player p = (Player) e.getWhoClicked();
         Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
-        if (e.getClickedInventory().equals(BI)) {
+        if (Objects.requireNonNull(e.getClickedInventory()).equals(BI)) {
             e.setCancelled(true);
             if (slot == 10){
                 p.openInventory(SummonGui.getInventory());

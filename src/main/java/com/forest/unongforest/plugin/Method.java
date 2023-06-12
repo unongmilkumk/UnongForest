@@ -9,12 +9,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Method {
     public static ItemStack makeItem(Material material, String name, List<String> lore) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(name);
+        Objects.requireNonNull(itemMeta).setDisplayName(name);
         itemMeta.setLore(lore);
         itemMeta.addItemFlags(ItemFlag.values());
         item.setItemMeta(itemMeta);
