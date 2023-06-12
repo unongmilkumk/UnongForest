@@ -64,7 +64,7 @@ public class BeaconGui implements Listener {
             } else if (slot == 16) {
                 if (p.getInventory().getChestplate() == null && p.getInventory().getItem(0) == null) {
                     p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
-                    p.getInventory().setItem(0, new ItemStack(Material.ELYTRA));
+                    p.getInventory().setItem(0, new ItemStack(Material.FIREWORK_ROCKET));
                 }
                 if (p.getInventory().getChestplate() == null) {
                     p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
