@@ -4,6 +4,7 @@ import com.forest.unongforest.gui.enchant.EnchantGui;
 import com.forest.unongforest.plugin.Method;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +14,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 public class Enchant implements Listener {
 
@@ -25,6 +28,7 @@ public class Enchant implements Listener {
         Block b = e.getClickedBlock();
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
             if (Objects.requireNonNull(b).getType().equals(Material.ENCHANTING_TABLE)) {
+                e.setCancelled(true);
                 p.openInventory(EnchantGui.getInventory());
             }
         }
@@ -35,10 +39,21 @@ public class Enchant implements Listener {
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
         ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(e.getSlot());
-        if(Objects.requireNonNull(p.getOpenInventory().getTopInventory()).equals(EnchantGui.getInventory())){
+        if(e.getView().getTitle().equals("마법부여")){
             e.setCancelled(true);
-            if (Method.canEnchantable(i)){
-                p.getOpenInventory().setItem(13, Objects.requireNonNull(i).clone());
+            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i)){
+                ItemStack itemStack = Method.makeItem(i.getType(), i.getItemMeta().getDisplayName(), i.getItemMeta().getLore());
+                Random random = new Random();
+                int randomIndex = random.nextInt(Enchantment.values().length);
+                Enchantment enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
+                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
+                randomIndex = random.nextInt(Enchantment.values().length);
+                enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
+                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
+                randomIndex = random.nextInt(Enchantment.values().length);
+                enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
+                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
+                e.getClickedInventory().setItem(13, i.clone());
                 Slot = e.getSlot();
             }
         }
