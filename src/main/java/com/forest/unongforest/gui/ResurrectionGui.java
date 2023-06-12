@@ -6,7 +6,6 @@ package com.forest.unongforest.gui;
         import org.bukkit.inventory.ItemStack;
 
 public class ResurrectionGui {
-
     public static Inventory getInventory() {
         Inventory ret = Bukkit.createInventory(null, 27, "부활");
         for (int i = 0; i <= 26; i++) {
