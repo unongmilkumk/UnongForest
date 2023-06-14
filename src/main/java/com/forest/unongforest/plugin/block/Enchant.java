@@ -21,6 +21,7 @@ import java.util.Random;
 public class Enchant implements Listener {
 
     int Slot = -1;
+    ItemStack EnchantItem;
 
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
@@ -41,14 +42,17 @@ public class Enchant implements Listener {
         ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(13);
         if(e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44){
             e.setCancelled(true);
-            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
-                ItemStack itemStack = Method.makeItem(i.getType(), i.getItemMeta().getDisplayName(), i.getItemMeta().getLore());
-                Random random = new Random();
-                for (Enchantment value : Enchantment.values()) {
-                    itemStack.addUnsafeEnchantment(value, 1);
-                }
+            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i)){
+                EnchantItem = Method.makeItem(i.getType(), i.getItemMeta().getDisplayName(), i.getItemMeta().getLore());;
                 e.getClickedInventory().setItem(13, i.clone());
-                Slot = e.getSlot();
+                Slot = e.getRawSlot();
+            }
+        }
+        if (!i.equals(new ItemStack(Material.LIGHT_GRAY_WOOL)) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
+            Random random = new Random();
+            for (Enchantment value : Enchantment.values()) {
+                EnchantItem.addUnsafeEnchantment(value, 1);
+                p.getInventory().setItem(Slot, EnchantItem);
             }
         }
     }
