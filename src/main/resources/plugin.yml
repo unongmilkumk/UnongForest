@@ -2,9 +2,9 @@ name: UnongForest
 version: '${version}'
 main: com.forest.unongforest.plugin.Main
 api-version: '1.20'
-authors: [UnongMilk, Momo, NamedCrew]
-contributor: NamedCrew
+authors: [Unongmilk, Momo, NamedCrew]
+contributor: [Momo, NamedCrew]
 website: https://github.com/unongmilkumk
 commands:
   guild:
-    description: "command associated with guild"
+    description: "Guild Command"
