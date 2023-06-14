@@ -40,7 +40,7 @@ public class BeaconGui implements Listener {
         Player p = (Player) e.getPlayer();
         Inventory BI = BeaconGui.getInventory();
         Guild g = GuildList.getGuild(p);
-        if (e.getInventory().equals(BI)) {
+        if (e.getView().getTitle().equals("신호기")) {
             ArrayList<String> lore1 = new ArrayList<>();
             lore1.add("구성원 : " + g.getMembers());
             lore1.add("소환비용 : 다이아몬드 x" + g.getMembers().size()*64 + "개");
@@ -53,7 +53,7 @@ public class BeaconGui implements Listener {
         Player p = (Player) e.getWhoClicked();
         Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
-        if (p.getOpenInventory().getTitle().equals("신호기")) {
+        if (p.getOpenInventory().getTitle().equals("신호기") && e.getRawSlot() <= 26) {
             e.setCancelled(true);
             if (slot == 10){
                 p.openInventory(SummonGui.getInventory());
