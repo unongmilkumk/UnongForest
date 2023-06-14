@@ -1,11 +1,13 @@
 package com.forest.unongforest.gui.command;
 
+import com.forest.unongforest.plugin.guild.Guild;
+import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Guild implements CommandExecutor {
+public class GuildCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
@@ -14,7 +16,7 @@ public class Guild implements CommandExecutor {
 
             } else {
                 if(args[0].equals("make")){
-
+                    GuildList.addGuild(new Guild(p));
                 }
             }
         }
