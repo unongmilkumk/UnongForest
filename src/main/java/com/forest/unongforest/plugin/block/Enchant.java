@@ -38,21 +38,15 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
-        ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(e.getSlot());
-        if(e.getView().getTitle().equals("마법부여")){
+        ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(13);
+        if(e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44){
             e.setCancelled(true);
-            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i)){
+            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
                 ItemStack itemStack = Method.makeItem(i.getType(), i.getItemMeta().getDisplayName(), i.getItemMeta().getLore());
                 Random random = new Random();
-                int randomIndex = random.nextInt(Enchantment.values().length);
-                Enchantment enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
-                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
-                randomIndex = random.nextInt(Enchantment.values().length);
-                enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
-                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
-                randomIndex = random.nextInt(Enchantment.values().length);
-                enchantment = Arrays.asList(Enchantment.values()).get(randomIndex);
-                itemStack.addEnchantment(enchantment, new Random().nextInt(enchantment.getMaxLevel() - 1) + 1);
+                for (Enchantment value : Enchantment.values()) {
+                    itemStack.addUnsafeEnchantment(value, 1);
+                }
                 e.getClickedInventory().setItem(13, i.clone());
                 Slot = e.getSlot();
             }
