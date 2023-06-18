@@ -18,9 +18,6 @@ import java.util.*;
 
 public class Enchant implements Listener {
 
-    int Slot = -1;
-    ItemStack EnchantItem;
-
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
@@ -35,24 +32,20 @@ public class Enchant implements Listener {
 
     @EventHandler
     public void onInvClick(InventoryClickEvent e){
-        Inventory Inv = e.getClickedInventory();
-        if(Inv != null) {
+        Inventory inv = e.getClickedInventory();
+        if(inv != null) {
             Player p = (Player) e.getWhoClicked();
-            ItemStack i = Inv.getItem(13);
+            ItemStack i = inv.getItem(13);
             ItemStack ClickItem = e.getClickedInventory().getItem(e.getSlot());
-            if (e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44) {
+            if (e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44 && e.getSlot() != 13) {
                 e.setCancelled(true);
-                if (i != null && !i.getType().equals(Material.AIR) && Method.canEnchantable(ClickItem)) {
-                    EnchantItem = ClickItem != null ? ClickItem.clone() : null;
-                    Inv.setItem(13, EnchantItem);
-                    Slot = e.getRawSlot();
+                if (i != null && !i.getType().equals(Material.AIR)
+                        && Method.canEnchantable(i) && e.getSlot() == 31) {
+                    List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
+                    Collections.shuffle(ench);
+                    i.addUnsafeEnchantment(ench.get(0), ench.get(0).getMaxLevel());
+                    inv.setItem(13, i);
                 }
-            }
-            if (i != null && Method.canEnchantable(i) && e.getSlot() == 31) {
-                List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
-                Collections.shuffle(ench);
-                EnchantItem.addUnsafeEnchantment(ench.get(0), 10);
-                p.getInventory().setItem(Slot, EnchantItem);
             }
         }
     }
