@@ -11,14 +11,12 @@ public class GuildCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
-        if(label.equals("guild")) {
-            if (args.length != 0){
-                switch (args[0]) {
-                    case "make" -> GuildList.addGuild(new Guild(p));
-                    case "go" -> {
-                        if (GuildList.getGuild(p) != null && GuildList.getGuild(p).hasBeacon()) {
-                            p.teleport(GuildList.getGuild(p).getBeacon());
-                        }
+        if (args.length != 0){
+            switch (args[0]) {
+                case "make" -> GuildList.addGuild(new Guild(p));
+                case "go" -> {
+                    if (GuildList.getGuild(p) != null && GuildList.getGuild(p).hasBeacon()) {
+                        p.teleport(GuildList.getGuild(p).getBeacon());
                     }
                 }
             }
