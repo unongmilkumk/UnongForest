@@ -1,4 +1,4 @@
-package com.forest.unongforest.gui.command;
+package com.forest.unongforest.plugin.command;
 
 import com.forest.unongforest.plugin.guild.Guild;
 import com.forest.unongforest.plugin.guild.GuildList;

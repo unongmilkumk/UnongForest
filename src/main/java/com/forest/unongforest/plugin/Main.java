@@ -1,6 +1,6 @@
 package com.forest.unongforest.plugin;
 
-import com.forest.unongforest.gui.command.GuildCommand;
+import com.forest.unongforest.plugin.command.GuildCommand;
 import com.forest.unongforest.plugin.block.Beacon;
 import com.forest.unongforest.plugin.block.Enchant;
 import com.forest.unongforest.gui.beacon.BeaconGui;
