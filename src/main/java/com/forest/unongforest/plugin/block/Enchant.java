@@ -36,22 +36,24 @@ public class Enchant implements Listener {
     @EventHandler
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
-        Player p = (Player) e.getWhoClicked();
-        ItemStack i = e.getClickedInventory().getItem(13);
-        ItemStack ClickItem = e.getClickedInventory().getItem(e.getSlot());
-        if(e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44){
-            e.setCancelled(true);
-            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(ClickItem)){
-                EnchantItem = ClickItem != null ? ClickItem.clone() : null;
-                Inv.setItem(13, EnchantItem);
-                Slot = e.getRawSlot();
+        if(Inv != null) {
+            Player p = (Player) e.getWhoClicked();
+            ItemStack i = Inv.getItem(13);
+            ItemStack ClickItem = e.getClickedInventory().getItem(e.getSlot());
+            if (e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44) {
+                e.setCancelled(true);
+                if (i != null && !i.getType().equals(Material.AIR) && Method.canEnchantable(ClickItem)) {
+                    EnchantItem = ClickItem != null ? ClickItem.clone() : null;
+                    Inv.setItem(13, EnchantItem);
+                    Slot = e.getRawSlot();
+                }
             }
-        }
-        if (!Objects.requireNonNull(i).getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
-            List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
-            Collections.shuffle(ench);
-            EnchantItem.addUnsafeEnchantment(ench.get(0),10);
-            p.getInventory().setItem(Slot, EnchantItem);
+            if (i != null && Method.canEnchantable(i) && e.getSlot() == 31) {
+                List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
+                Collections.shuffle(ench);
+                EnchantItem.addUnsafeEnchantment(ench.get(0), 10);
+                p.getInventory().setItem(Slot, EnchantItem);
+            }
         }
     }
 }
