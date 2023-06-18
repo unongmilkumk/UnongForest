@@ -19,8 +19,9 @@ import java.util.Objects;
 public class BeaconGui implements Listener {
     public static Inventory getInventory() {
         Inventory BI = Bukkit.createInventory(null, 27, "신호기");
+        ArrayList<String> l = new ArrayList<>();
         for (int i = 0; i <= 26; i++) {
-            BI.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+            BI.setItem(i, Method.makeItem(Material.GRAY_STAINED_GLASS_PANE, " ", l));
         }
         ArrayList<String> lore1 = new ArrayList<>();
         lore1.add("구성원 : 1");

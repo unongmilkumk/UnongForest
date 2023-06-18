@@ -14,9 +14,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Enchant implements Listener {
 
@@ -39,21 +37,21 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory Inv = e.getClickedInventory();
         Player p = (Player) e.getWhoClicked();
-        ItemStack i = Objects.requireNonNull(e.getClickedInventory()).getItem(13);
+        ItemStack i = e.getClickedInventory().getItem(13);
+        ItemStack ClickItem = e.getClickedInventory().getItem(e.getSlot());
         if(e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44){
             e.setCancelled(true);
-            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i)){
-                EnchantItem = Method.makeItem(i.getType(), i.getItemMeta().getDisplayName(), i.getItemMeta().getLore());;
-                e.getClickedInventory().setItem(13, i.clone());
+            if (!i.equals(null) && !i.getType().equals(Material.AIR) && Method.canEnchantable(ClickItem)){
+                EnchantItem = ClickItem != null ? ClickItem.clone() : null;
+                Inv.setItem(13, EnchantItem);
                 Slot = e.getRawSlot();
             }
         }
-        if (!i.equals(new ItemStack(Material.LIGHT_GRAY_WOOL)) && !i.getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
-            Random random = new Random();
-            for (Enchantment value : Enchantment.values()) {
-                EnchantItem.addUnsafeEnchantment(value, 1);
-                p.getInventory().setItem(Slot, EnchantItem);
-            }
+        if (!Objects.requireNonNull(i).getType().equals(Material.AIR) && Method.canEnchantable(i) && e.getSlot() == 31){
+            List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
+            Collections.shuffle(ench);
+            EnchantItem.addUnsafeEnchantment(ench.get(0),10);
+            p.getInventory().setItem(Slot, EnchantItem);
         }
     }
 }
