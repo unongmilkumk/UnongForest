@@ -29,8 +29,8 @@ public class Guild {
         return members;
     }
 
-    public boolean addMember(Player player) {
-        return members.add(player);
+    public void addMember(Player player) {
+        if (player != null) members.add(player);
     }
 
     public boolean removeMember(Player player) {
