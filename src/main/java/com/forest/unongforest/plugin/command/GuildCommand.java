@@ -19,10 +19,8 @@ public class GuildCommand implements CommandExecutor {
         if(label.equals("guild")) {
             if (args.length != 0){
                 switch (args[0]) {
-                    case "make" : {
-                        GuildList.addGuild(new Guild(p));
-                    }
-                    case "invite" : {
+                    case "make" -> GuildList.addGuild(new Guild(p));
+                    case "invite" -> {
                         Guild guild = GuildList.getGuild(p);
                         if (guild == null) return false;
                         Player player = null;
