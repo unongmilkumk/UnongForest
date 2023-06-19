@@ -16,7 +16,7 @@ public class GuildCommand implements CommandExecutor {
                 case "make" -> GuildList.addGuild(new Guild(p));
                 case "go" -> {
                     if (GuildList.getGuild(p) != null && GuildList.getGuild(p).hasBeacon()) {
-                        p.teleport(GuildList.getGuild(p).getBeacon());
+                        p.teleport(GuildList.getGuild(p).getBeacon().add(0.0, 1.0, 0.0));
                     }
                 }
             }

@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
@@ -43,8 +44,14 @@ public class Enchant implements Listener {
                         && Method.canEnchantable(i) && e.getSlot() == 31) {
                     List<Enchantment> ench = new ArrayList<>(Arrays.stream(Enchantment.values()).toList());
                     Collections.shuffle(ench);
-                    i.addUnsafeEnchantment(ench.get(0), ench.get(0).getMaxLevel());
-                    inv.setItem(13, i);
+                    ItemStack itemStack = new ItemStack(i.getType());
+                    ItemMeta itemMeta = itemStack.getItemMeta().clone();
+                    if (itemMeta.hasEnchants()) itemMeta.getEnchants().forEach((enchantment, integer) -> itemMeta.removeEnchant(enchantment));
+                    itemStack.setItemMeta(itemMeta);
+                    itemStack.addUnsafeEnchantment(ench.get(0), Math.max(new Random().nextInt(Math.max(ench.get(0).getMaxLevel(), 1)), 1));
+                    itemStack.addUnsafeEnchantment(ench.get(1), Math.max(new Random().nextInt(Math.max(ench.get(1).getMaxLevel(), 1)), 1));
+                    itemStack.addUnsafeEnchantment(ench.get(2), Math.max(new Random().nextInt(Math.max(ench.get(2).getMaxLevel(), 1)), 1));
+                    inv.setItem(13, itemStack);
                 }
             }
         }
