@@ -50,9 +50,8 @@ public class BeaconGui implements Listener {
     }
 
     @EventHandler
-    public void click(InventoryClickEvent e){
+    public void OnInvClick(InventoryClickEvent e){
         Player p = (Player) e.getWhoClicked();
-        Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
         if (p.getOpenInventory().getTitle().equals("신호기") && e.getRawSlot() <= 26) {
             e.setCancelled(true);

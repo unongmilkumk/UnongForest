@@ -3,6 +3,7 @@ package com.forest.unongforest.plugin.block;
 import com.forest.unongforest.gui.beacon.BeaconGui;
 import com.forest.unongforest.plugin.guild.Guild;
 import com.forest.unongforest.plugin.guild.GuildList;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -12,6 +13,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Beacon implements Listener {
@@ -47,6 +50,21 @@ public class Beacon implements Listener {
             } else {
                 p.sendMessage("해수면 아래에 신호기를 설치해 주세요");
                 e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onBreak(BlockPlaceEvent e) {
+        Player p = e.getPlayer();
+        Block b = e.getBlock();
+        Guild g = GuildList.getGuild(p);
+        if (b.getType().equals(Material.BEACON)) {
+            List<Player> PlayerList = (List<Player>) ((ArrayList<?>) Bukkit.getOnlinePlayers()).clone();
+            for (Player player : PlayerList) {
+                if (b.getLocation().equals(GuildList.getGuild(player).getBeacon())) {
+                    GuildList.getGuild(player).
+                }
             }
         }
     }
