@@ -60,10 +60,9 @@ public class Beacon implements Listener {
         Block b = e.getBlock();
         Guild g = GuildList.getGuild(p);
         if (b.getType().equals(Material.BEACON)) {
-            List<Player> PlayerList = (List<Player>) ((ArrayList<?>) Bukkit.getOnlinePlayers()).clone();
-            for (Player player : PlayerList) {
-                if (b.getLocation().equals(GuildList.getGuild(player).getBeacon())) {
-                    GuildList.getGuild(player).
+            for (Guild guild : GuildList.guilds) {
+                if (b.getLocation().equals(guild.getBeacon())) {
+                    GuildList.removeGuild(guild);
                 }
             }
         }

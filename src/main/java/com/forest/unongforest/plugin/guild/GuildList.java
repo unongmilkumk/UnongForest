@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 public class GuildList {
-    private static ArrayList<Guild> guilds = new ArrayList<>();
+    public static ArrayList<Guild> guilds = new ArrayList<>();
     public static Guild getGuild(Player player) {
         final Guild[] ret = new Guild[1];
         ret[0] = null;
@@ -16,5 +16,8 @@ public class GuildList {
     }
     public static void addGuild(Guild guild) {
         guilds.add(guild);
+    }
+    public static void removeGuild(Guild guild) {
+        guilds.remove(guild);
     }
 }
