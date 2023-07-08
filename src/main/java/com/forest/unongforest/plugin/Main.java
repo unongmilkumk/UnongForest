@@ -1,9 +1,11 @@
 package com.forest.unongforest.plugin;
 
+import com.forest.unongforest.gui.beacon.SummonGui;
 import com.forest.unongforest.plugin.command.GuildCommand;
 import com.forest.unongforest.plugin.block.Beacon;
 import com.forest.unongforest.plugin.block.Enchant;
 import com.forest.unongforest.gui.beacon.BeaconGui;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -12,9 +14,11 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Hello World");
         getServer().getPluginManager().registerEvents(new BeaconGui(), this);
+        getServer().getPluginManager().registerEvents(new SummonGui(), this);
         getServer().getPluginManager().registerEvents(new Beacon(), this);
         getServer().getPluginManager().registerEvents(new Enchant(), this);
         getCommand("guild").setExecutor(new GuildCommand());
+        getServer().
     }
 
     @Override

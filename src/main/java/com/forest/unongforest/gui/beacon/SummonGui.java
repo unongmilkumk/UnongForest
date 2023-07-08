@@ -1,23 +1,32 @@
 package com.forest.unongforest.gui.beacon;
 
+import com.forest.unongforest.plugin.guild.Guild;
+import com.forest.unongforest.plugin.guild.GuildList;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class SummonGui {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class SummonGui implements Listener {
 
     public static Inventory getInventory() {
-        Inventory SUI = Bukkit.createInventory(null, 27, "소환");
-        for (int i = 0; i <= 26; i++) {
+        Inventory SUI = Bukkit.createInventory(null, 45, "소환");
+        for (int i = 0; i <= 44; i++) {
+            ItemStack item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
             if (i == 13) {
-                SUI.setItem(i, new ItemStack(Material.AIR));
-            } else {
-                SUI.setItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+                item = new ItemStack(Material.AIR);
+            } else if (i == 31) {
+                item = new ItemStack(Material.LIME_WOOL);
             }
+            SUI.setItem(i, item);
         }
         return SUI;
     }
@@ -25,26 +34,20 @@ public class SummonGui {
     @EventHandler
     public void OnInvClick(InventoryClickEvent e){
         Player p = (Player) e.getWhoClicked();
-        Inventory BI = BeaconGui.getInventory();
         int slot = e.getSlot();
-        if (p.getOpenInventory().getTitle().equals("신호기") && e.getRawSlot() <= 26) {
+        if (p.getOpenInventory().getTitle().equals("소환")){
             e.setCancelled(true);
-            if (slot == 10){
-                p.openInventory(SummonGui.getInventory());
-            } else if (slot == 12) {
-                p.openInventory(ResurrectionGui.getInventory());
-            } else if (slot == 14) {
-                p.openInventory(StoreGui.getInventory());
-            } else if (slot == 16) {
-                if (p.getInventory().getChestplate() == null && p.getInventory().getItem(0) == null) {
-                    p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
-                    p.getInventory().setItem(0, new ItemStack(Material.FIREWORK_ROCKET));
+            if (slot == 31){
+                for(int i = 0; i < 36; i++) {
+                    if(Objects.requireNonNull(p.getInventory().getItem(i)).equals(new ItemStack(Material.DIAMOND, 64))) {
+                        List<Player> PlayerList = (List<Player>) ((ArrayList<?>) Bukkit.getOnlinePlayers()).clone();
+                        for (Player player : PlayerList) {
+                            if (GuildList.getGuild(player) == null) {
+                                GuildList.getGuild(p).addMember(player);
+                            }
+                        }
+                    }
                 }
-                if (p.getInventory().getChestplate() == null) {
-                    p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
-                }
-            } else {
-                e.setCancelled(true);
             }
         }
     }

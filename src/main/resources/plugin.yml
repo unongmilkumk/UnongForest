@@ -8,3 +8,7 @@ website: https://github.com/unongmilkumk
 commands:
   guild:
     description: "Guild Command"
+    usage:
+    permission:
+    permission-message:
+    aliases:
