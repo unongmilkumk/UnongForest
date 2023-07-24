@@ -35,9 +35,7 @@ public class Enchant implements Listener {
     public void onInvClick(InventoryClickEvent e){
         Inventory inv = e.getClickedInventory();
         if(inv != null) {
-            Player p = (Player) e.getWhoClicked();
             ItemStack i = inv.getItem(13);
-            ItemStack ClickItem = e.getClickedInventory().getItem(e.getSlot());
             if (e.getView().getTitle().equals("마법부여") && e.getRawSlot() <= 44 && e.getSlot() != 13) {
                 e.setCancelled(true);
                 if (i != null && !i.getType().equals(Material.AIR)
